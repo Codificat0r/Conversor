@@ -2,12 +2,14 @@ package com.example.conversor;
 
 import android.content.DialogInterface;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RadioButton rbtnEuroDolar;
     EditText edtxtDolar;
     EditText edtxtEuro;
-    double conversionEuroDolar = 1.18;
+    Conversion miConversor = new Conversion();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             try {
                 if (rbtnDolarEuro.isChecked()) {
-                    edtxtEuro.setText((String.format("%.2f", Double.parseDouble(edtxtDolar.getText().toString()) / conversionEuroDolar)).replace(',','.'));
+                    edtxtEuro.setText(miConversor.convertirAEuros(edtxtDolar.getText().toString()));
                 }
                 if (rbtnEuroDolar.isChecked()) {
-                    edtxtDolar.setText((String.format("%.2f", Double.parseDouble(edtxtEuro.getText().toString()) * conversionEuroDolar)).replace(',','.'));
+                    edtxtDolar.setText(miConversor.convertirADolares(edtxtEuro.getText().toString()));
                 }
             }
             catch (Exception e) {
+                Toast.makeText(this, "Error en el formato de los números introducidos", Toast.LENGTH_SHORT).show();
+                Snackbar.make(view, "Error en el formato de los numeros introducidos", Snackbar.LENGTH_SHORT).show();
             }
         }
     }
