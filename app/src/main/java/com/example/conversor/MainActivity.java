@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     edtxtDolar.setText((String.format("%.2f", Double.parseDouble(edtxtEuro.getText().toString()) * conversionEuroDolar)).replace(',','.'));
                 }
             }
-            finally {
+            catch (Exception e) {
             }
         }
     }

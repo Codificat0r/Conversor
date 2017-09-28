@@ -17,7 +17,7 @@
             android:layout_width="91dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/txtvDolar"
@@ -40,7 +40,7 @@
             android:layout_width="91dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/txtvEuro"
